@@ -9,10 +9,10 @@
     android:layout_gravity="center">
 
     <TextView
+        android:id="@+id/printMessage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:text="전달 받은 메시지 출력 자리"/>
-
 
 </LinearLayout>
