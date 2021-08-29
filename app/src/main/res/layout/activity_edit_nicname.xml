@@ -4,21 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewMessageActivity"
-    android:orientation="vertical"
-    android:layout_gravity="center">
+    tools:context=".EditNicnameActivity"
+    android:padding="30dp">
 
     <TextView
-        android:id="@+id/messageText"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:text="전달 받은 메시지 출력 자리"/>
+        android:text="닉네임"/>
 
-    <TextView
-        android:id="@+id/numberTxt"
+    <EditText
+        android:id="@+id/nicknameEdt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="전달 받은 숫자 표현 자리"/>
+        android:hint="새로 사용할 닉넴"/>
+
+    <Button
+        android:id="@+id/okBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="변경완료"/>
+
 
 </LinearLayout>
