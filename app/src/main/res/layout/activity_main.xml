@@ -6,8 +6,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="30dp"
+    android:gravity="center"
     tools:context=".MainActivity">
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="메인화면입니다."
+    android:textSize="20sp"
+    />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="다른 화면으로 이동하기"/>
 
 
 </LinearLayout>
