@@ -11,9 +11,8 @@ class OtherActivity2 : AppCompatActivity() {
         setContentView(R.layout.activity_other2)
 
         returnToMainBtn.setOnClickListener {
-//            Intent를 이용 메인으로 이동
-
-
+//            이전 화면으로 복귀: Intent 사용X, 현재화면 종료처리 finish()
+            finish()
         }
     }
 }
