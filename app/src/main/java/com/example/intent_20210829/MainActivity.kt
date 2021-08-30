@@ -3,11 +3,14 @@ package com.example.intent_20210829
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    var REQ_FOR_NICK_NAME = 1004
+    val REQ_FOR_NICK_NAME = 1004 //String이다.
+    val REQ_FOR_PHONE_NUM = 1005 //nuber다.
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,7 +21,7 @@ class MainActivity : AppCompatActivity() {
             val myIntent = Intent(this, EditNicnameActivity::class.java)
 //            startActivity()를 쓰지 않는다.
 //            데이터(새 닉네임)을 받아오는 왕복을 해야한다.
-                startActivityForResult(myIntent, REQ_FOR_NICK_NAME) // <--왕복용
+            startActivityForResult(myIntent, REQ_FOR_NICK_NAME) // <--왕복용
         }
 
 
@@ -38,6 +41,23 @@ class MainActivity : AppCompatActivity() {
 //            어느 화면으로 갈 것인지 정보 명시.
             val myIntent = Intent(this, OtherActivity2::class.java) // (출발지, 목적지)
             startActivity(myIntent) //이 변수보고 이동하자.
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        Log.d("onActivityResult", requestCode.toString())
+        Log.d("onActivityResult", resultCode.toString())
+
+        if (requestCode == REQ_FOR_NICK_NAME) {
+            if (data != null) {
+                Log.d("onActivityResult", data.getStringExtra("newNickname").toString())
+                nicknameTxt.text = data.getStringExtra("newNickname").toString()
+                Toast.makeText(this,"닉네임이 변경되었습니다.", Toast.LENGTH_SHORT).show()
+            }
+        } else{
+            Toast.makeText(this,"입력값 오류 발생", Toast.LENGTH_SHORT).show()
         }
     }
 }

@@ -13,11 +13,10 @@ class EditNicnameActivity : AppCompatActivity() {
         okBtn.setOnClickListener {
 //            확인 버튼 눌리면?
 
-//            임력 닉네임 변수에 저장
+//            입력 닉네임 변수에 저장
             val inputNickname = nicknameEdt.text.toString()
 
 //            변경된 닉넴을 들고 이전 화면 복귀
-//              들고 데이터 첨부
             val resultIntent = Intent() //<- 왕복용으로 온 것이라서 출발지, 목적지를 비운다. 그냥 닉네임 첨부하려고 만듦
             resultIntent.putExtra("newNickname", inputNickname)
 
@@ -27,8 +26,6 @@ class EditNicnameActivity : AppCompatActivity() {
 
 //            복귀 처리
             finish()
-
-
 
         }
     }

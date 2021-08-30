@@ -4,48 +4,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     android:orientation="vertical"
     android:padding="30dp"
-    android:gravity="center"
     tools:context=".MainActivity">
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="메인화면입니다."
-    android:textSize="20sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="메인화면입니다."
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/moveToOtherBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="다른 화면으로 이동하기"/>
+        android:text="다른 화면으로 이동하기" />
 
     <EditText
         android:id="@+id/messageEdt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="전달할 내용 입력"/>
+        android:text="전달할 내용 입력" />
 
     <Button
         android:id="@+id/sendMessageBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="메시지 화면에 내용 전달하기"/>
+        android:text="메시지 화면에 내용 전달하기" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="닉네임"/>
+        android:text="닉네임" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/nicknameTxt"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="냥냐루"/>
+            android:layout_weight="4"
+            android:textSize="18sp"
+            android:text="냥냐루" />
 
         <Button
             android:id="@+id/editNicknameBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="닉네임 변경"/>
+            android:layout_weight="1"
+            android:text="닉네임 변경" />
     </LinearLayout>
+</LinearLayout>
