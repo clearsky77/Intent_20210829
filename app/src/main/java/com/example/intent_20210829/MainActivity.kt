@@ -17,6 +17,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+//        문자보내기
+        smsBtn.setOnClickListener{
+            val inputPhoneNum = inputPhomeNum.text.toString()
+            val myUri = Uri.parse("smsto:${inputPhoneNum}")
+            val myIntent = Intent(Intent.ACTION_SENDTO, myUri)
+            //문자보내기 화면에 표시할 전달해주기
+            myIntent.putExtra("sms_body","전달할 내용")
+            startActivity(myIntent)
+        }
+
 //        전화 걸기 바로 가는 코드
 //        문법상 문제가 없어도 앱이 정지된다. 권한 획득해야 정상 동작.
         callBtn.setOnClickListener {
@@ -25,8 +35,6 @@ class MainActivity : AppCompatActivity() {
             val myIntent = Intent(Intent.ACTION_CALL, myUri)
             startActivity(myIntent)
         }
-
-
 
 //        전화 걸기 (DIAL) Intent 활용 예시.
         dialbtn.setOnClickListener(){
