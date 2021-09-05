@@ -17,6 +17,21 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
+//      스토어로 바로가기
+        smsBtn.setOnClickListener{
+            val myUri = Uri.parse("market://details?id=com.kakao.talk")
+            val myIntent = Intent(Intent.ACTION_VIEW, myUri)
+            startActivity(myIntent)
+        }
+
+//      웹 사이트로 바로가기
+        smsBtn.setOnClickListener{
+            val myUri = Uri.parse("https://naver.com")
+            val myIntent = Intent(Intent.ACTION_VIEW, myUri)
+            startActivity(myIntent)
+        }
+
 //        문자보내기
         smsBtn.setOnClickListener{
             val inputPhoneNum = inputPhomeNum.text.toString()
