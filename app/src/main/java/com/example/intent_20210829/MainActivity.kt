@@ -1,6 +1,7 @@
 package com.example.intent_20210829
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -15,6 +16,17 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+//        전화 걸기 (DIAL) Intent 활용 예시.
+        dialbtn.setOnClickListener(){
+//            전화번호 받아오기
+            val inputPhoneNum = inputPhomeNum.text.toString()
+//            어디에 걸지 Uri
+            val myUri = Uri.parse("tel:${inputPhoneNum}") //코틀린에서 바로바로 받아올 수 있는 ${}문법
+//            전화 화면으로 이동
+            val myIntent = Intent(Intent.ACTION_DIAL, myUri) //ACTION_DIAL에 갈거야.
+            startActivity(myIntent)
+        }
 
         editNicknameBtn.setOnClickListener {
 //            닉네임 변경 화면으로 이동. 돌아 올 때는 새로는 닉넴을 받아와야함. (왕복)
