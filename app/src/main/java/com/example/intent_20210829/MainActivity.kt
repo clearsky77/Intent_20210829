@@ -44,20 +44,36 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    //startActivityForResult를 통해서 이동화면에서 -> 메인 화면으로 복귀하면 실행시켜주는 함수.
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        // 1. requestCode : Int -> 어디를 다녀온 것인지 알려주는 역할.
+        // 2. resultCode : Int -> RESULT_OK를 가져 왔는지, 취소값 가져왔는지.
         super.onActivityResult(requestCode, resultCode, data)
 
-        Log.d("onActivityResult", requestCode.toString())
-        Log.d("onActivityResult", resultCode.toString())
+        Toast.makeText(this, "결과를 가지고 왔다.", Toast.LENGTH_SHORT).show()
+
+//        Log.d("onActivityResult", requestCode.toString())
+//        Log.d("onActivityResult", resultCode.toString())
+
 
         if (requestCode == REQ_FOR_NICK_NAME) {
-            if (data != null) {
-                Log.d("onActivityResult", data.getStringExtra("newNickname").toString())
-                nicknameTxt.text = data.getStringExtra("newNickname").toString()
-                Toast.makeText(this,"닉네임이 변경되었습니다.", Toast.LENGTH_SHORT).show()
+            if (resultCode == RESULT_OK) {
+                val newNickname = data?.getStringExtra("newNickname")
+                nicknameTxt.text = newNickname
             }
         } else{
             Toast.makeText(this,"입력값 오류 발생", Toast.LENGTH_SHORT).show()
         }
+
+//        인터넷에서 가져온 소스
+//        if (requestCode == REQ_FOR_NICK_NAME) {
+//            if (data != null) {
+//                Log.d("onActivityResult", data.getStringExtra("newNickname").toString())
+//                nicknameTxt.text = data.getStringExtra("newNickname").toString()
+//                Toast.makeText(this,"닉네임이 변경되었습니다.", Toast.LENGTH_SHORT).show()
+//            }
+//        } else{
+//            Toast.makeText(this,"입력값 오류 발생", Toast.LENGTH_SHORT).show()
+//        }
     }
 }
