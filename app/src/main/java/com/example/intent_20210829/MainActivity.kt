@@ -17,6 +17,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+//        전화 걸기 바로 가는 코드
+//        문법상 문제가 없어도 앱이 정지된다. 권한 획득해야 정상 동작.
+        callBtn.setOnClickListener {
+            val inputPhoneNum = inputPhomeNum.text.toString()
+            val myUri = Uri.parse("tel:${inputPhoneNum}")
+            val myIntent = Intent(Intent.ACTION_CALL, myUri)
+            startActivity(myIntent)
+        }
+
+
+
 //        전화 걸기 (DIAL) Intent 활용 예시.
         dialbtn.setOnClickListener(){
 //            전화번호 받아오기
@@ -24,7 +35,7 @@ class MainActivity : AppCompatActivity() {
 //            어디에 걸지 Uri
             val myUri = Uri.parse("tel:${inputPhoneNum}") //코틀린에서 바로바로 받아올 수 있는 ${}문법
 //            전화 화면으로 이동
-            val myIntent = Intent(Intent.ACTION_DIAL, myUri) //ACTION_DIAL에 갈거야.
+            val myIntent = Intent(Intent.ACTION_DIAL, myUri) //ACTION_DIAL 사용.
             startActivity(myIntent)
         }
 
