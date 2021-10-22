@@ -17,6 +17,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        loadText() // 이전에 저장되었던 닉네임을 UI에 표현
+
 //      스토어로 바로가기
         smsBtn.setOnClickListener{
             val myUri = Uri.parse("market://details?id=com.kakao.talk")
@@ -110,15 +112,14 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this,"입력값 오류 발생", Toast.LENGTH_SHORT).show()
         }
 
-//        인터넷에서 가져온 소스
-//        if (requestCode == REQ_FOR_NICK_NAME) {
-//            if (data != null) {
-//                Log.d("onActivityResult", data.getStringExtra("newNickname").toString())
-//                nicknameTxt.text = data.getStringExtra("newNickname").toString()
-//                Toast.makeText(this,"닉네임이 변경되었습니다.", Toast.LENGTH_SHORT).show()
-//            }
-//        } else{
-//            Toast.makeText(this,"입력값 오류 발생", Toast.LENGTH_SHORT).show()
-//        }
     }
+
+//    ---------------- 이하 메소드 ----------------
+
+    //  저장소에 저장된 텍스트를 UI에 표현
+    private fun loadText() {
+        val pref = getSharedPreferences("pref", 0 )
+        nicknameTxt.setText(pref.getString("SP_nickname","")) // 키 값, 키 값에 데이터가 없을 때 대체 값
+    }
+
 }
