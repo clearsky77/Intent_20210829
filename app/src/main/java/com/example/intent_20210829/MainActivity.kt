@@ -17,7 +17,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
 //      스토어로 바로가기
         smsBtn.setOnClickListener{
             val myUri = Uri.parse("market://details?id=com.kakao.talk")

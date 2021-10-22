@@ -91,5 +91,4 @@
         android:layout_height="wrap_content"
         android:text="카카오 스토어 링크(VIEW)"/>
 
-
 </LinearLayout>
