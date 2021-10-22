@@ -63,6 +63,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(myIntent)
         }
 
+//      닉네임 변경이 눌러지면
         editNicknameBtn.setOnClickListener {
 //            닉네임 변경 화면으로 이동. 돌아 올 때는 새로는 닉넴을 받아와야함. (왕복)
             val myIntent = Intent(this, EditNicnameActivity::class.java)
@@ -107,6 +108,7 @@ class MainActivity : AppCompatActivity() {
             if (resultCode == RESULT_OK) {
                 val newNickname = data?.getStringExtra("newNickname")
                 nicknameTxt.text = newNickname
+                saveText() // 변경된 닉네임을 내부 저장소에 저장
             }
         } else{
             Toast.makeText(this,"입력값 오류 발생", Toast.LENGTH_SHORT).show()
@@ -120,6 +122,14 @@ class MainActivity : AppCompatActivity() {
     private fun loadText() {
         val pref = getSharedPreferences("pref", 0 )
         nicknameTxt.setText(pref.getString("SP_nickname","")) // 키 값, 키 값에 데이터가 없을 때 대체 값
+    }
+
+    //  변경된 닉네임을 내부 저장소에 저장. 이제 앱을 껐다 켜도 이전에 저장한 닉네임이 보인다.
+    private fun saveText() {
+        val pref = getSharedPreferences("pref", 0) // 내부 저장소에 pref라는 이름으로 저장
+        val edit = pref.edit()
+        edit.putString("SP_nickname",nicknameTxt.text.toString()) // 키 값, 실제 담을 값
+        edit.apply() // 저장 실행
     }
 
 }
